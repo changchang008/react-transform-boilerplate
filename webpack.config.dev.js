@@ -10,7 +10,7 @@ module.exports = {
     // listen to code updates emitted by hot middleware:
     'webpack-hot-middleware/client',
     // your code:
-    './src/index'
+    './src/react-webpack-beginning/index'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -26,6 +26,15 @@ module.exports = {
       test: /\.js$/,
       loaders: ['babel'],
       include: path.join(__dirname, 'src')
+    },
+    {
+      test:/\.scss$/,
+      loader: 'style!css!autoprefixer!sass'
+      //loader: 'style!css!postcss!sass'
+    },
+    {
+      test:/\.(jpe?g|png)/,
+      loader: 'file-loader'
     }]
   }
 };
