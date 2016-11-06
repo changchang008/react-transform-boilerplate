@@ -10,12 +10,16 @@ module.exports = {
     // listen to code updates emitted by hot middleware:
     'webpack-hot-middleware/client',
     // your code:
-    './src/react-webpack-beginning/index'
+    './src/redux-tower/index'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/dist/'
+  },
+  watchOptions: {
+    aggregateTimeout: 300,
+    poll: 1000
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -35,6 +39,11 @@ module.exports = {
     {
       test:/\.(jpe?g|png)/,
       loader: 'file-loader'
+    },
+    { 
+      test: /\.css$/,
+      include: path.join(__dirname, 'src'),
+      loader: 'style-loader!css-loader'
     }]
   }
 };
