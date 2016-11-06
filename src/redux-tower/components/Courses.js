@@ -1,0 +1,25 @@
+import React from 'react';
+import Radium from 'radium';
+import Course from './Course.js';
+
+const Courses = React.createClass({
+  render() {
+    let styles = {
+      root: {
+        maxWidth: '1200px',
+        margin: '0 auto',
+        paddingTop: '6rem',
+        paddingBottom: '6rem',
+        display: 'flex',
+        flexWrap: 'wrap'
+      }
+    };
+
+    return (
+      <div style={styles.root}>
+        { this.props.courses.map((course, i) => <Course comments={this.props.comments[course.id]} increment={this.props.increment} key={i} course={course} />)}
+      </div>
+    )
+  }
+});
+export default Radium(Courses);
